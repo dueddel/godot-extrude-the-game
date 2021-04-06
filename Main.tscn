@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ImmediateGeometry.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://steering-wheel-small.png" type="Texture" id=4]
 [ext_resource path="res://road-small.png" type="Texture" id=5]
 [ext_resource path="res://ExtrudeLevel67.tscn" type="PackedScene" id=6]
+[ext_resource path="res://FlyingBar.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=1]
 params_cull_mode = 2
@@ -22,16 +23,6 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.321569, 0.415686, 0.537255, 1 )
-metallic = 0.77
-metallic_specular = 0.71
-roughness = 0.27
-
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 3 )
-size = Vector3( 50, 300, 20 )
-
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0, 0.0862745, 1, 1 )
 
@@ -42,18 +33,18 @@ size = Vector3( 50, 0.2, 0.2 )
 [sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 1, 0.0352941, 0.0352941, 1 )
 
-[sub_resource type="SpatialMaterial" id=10]
-albedo_color = Color( 0.196078, 1, 0, 1 )
-
-[sub_resource type="CubeMesh" id=11]
-material = SubResource( 10 )
-size = Vector3( 0.2, 10, 0.2 )
-
 [sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0, 0.552941, 1, 1 )
+albedo_color = Color( 0.196078, 1, 0, 1 )
 
 [sub_resource type="CubeMesh" id=9]
 material = SubResource( 8 )
+size = Vector3( 0.2, 10, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0, 0.552941, 1, 1 )
+
+[sub_resource type="CubeMesh" id=11]
+material = SubResource( 10 )
 size = Vector3( 0.2, 0.2, 50 )
 
 [node name="Main" type="Spatial"]
@@ -122,35 +113,40 @@ __meta__ = {
 
 [node name="World Background" type="Node" parent="."]
 
-[node name="MeshInstance" type="MeshInstance" parent="World Background"]
-transform = Transform( 1, 0, 0, 0, 0.999947, -0.0102798, 0, 0.0102798, 0.999947, -85.1414, -180, 68.4938 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.389365, 0, 0.921083, 0, 1, 0, -0.921084, 0, 0.389365, 83.7999, 105.612, -75.7948 )
+moveUp = 50.0
+startAt = 1.0
+wait = 10.0
 
-[node name="MeshInstance3" type="MeshInstance" parent="World Background"]
-transform = Transform( 0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 7, 63, -142 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar2" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.84528, 0, 0.534323, 0, 1, 0, -0.534323, 0, 0.84528, -89.824, 2.5647, -91.6596 )
+moveUp = 40.0
+startAt = 0.5
+wait = 8.0
 
-[node name="MeshInstance6" type="MeshInstance" parent="World Background"]
-transform = Transform( -5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, -89.146, 421.89, 68.1985 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar3" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.702588, 0, -0.711597, 0, 1, 0, 0.711597, 0, 0.702588, -139.585, 249.353, 37.6128 )
+moveUp = 80.0
+startAt = 0.8
+wait = 12.0
 
-[node name="MeshInstance4" type="MeshInstance" parent="World Background"]
-transform = Transform( -0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -165, 69, -19 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar4" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.284567, 0, -0.958656, 0, 1, 0, 0.958656, 0, 0.284567, 114.893, -23.1358, 24.6317 )
+startAt = 0.6
+wait = 15.0
 
-[node name="MeshInstance2" type="MeshInstance" parent="World Background"]
-transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 92.0062, 214, 2.65932 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar5" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.666064, 0, 0.745895, 0, 1, 0, -0.745895, 0, 0.666064, -3.82784, 273.455, 67.191 )
+moveUp = 70.0
+startAt = 0.25
+wait = 9.0
 
-[node name="MeshInstance5" type="MeshInstance" parent="World Background"]
-transform = Transform( 0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 16, 47, 185 )
-mesh = SubResource( 4 )
-material/0 = null
+[node name="FlyingBar6" parent="World Background" instance=ExtResource( 7 )]
+transform = Transform( 0.722181, -0.000556953, -0.691704, 0.000308736, 1, -0.000482846, 0.691704, 0.000135138, 0.722181, -4.94425, -205.355, -112.632 )
+moveUp = 50.0
+startAt = 0.6
+wait = 11.0
 
 [node name="Helper" type="Spatial" parent="."]
 visible = false
@@ -160,9 +156,9 @@ mesh = SubResource( 6 )
 material/0 = SubResource( 7 )
 
 [node name="yAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 11 )
+mesh = SubResource( 9 )
 material/0 = null
 
 [node name="zAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 9 )
+mesh = SubResource( 11 )
 material/0 = null
