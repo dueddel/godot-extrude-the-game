@@ -3,37 +3,62 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Spatial
 
-export var sensitivity : float = 0.005
 
-func _input(event):
+export(float, 0, 0.01, 0.0001) var sensitivity : float = 0.001
+export(float, 0, 90, 0.1) var maxDegreesVertical : float = 80
+export(float, 0, 180, 0.1) var maxDegreesHorizontal : float = 180
+
+onready var innerHub := $InnerHub
+var minDegreesHorizontal : float
+
+
+func _ready() -> void:
+	minDegreesHorizontal = maxDegreesHorizontal * -1
+
+	innerHub.sensitivity = sensitivity
+	innerHub.minDegreesVertical = maxDegreesVertical * -1
+	innerHub.maxDegreesVertical = maxDegreesVertical
+
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(event.relative.x * -sensitivity)
+
+		if rotation_degrees.y <= maxDegreesHorizontal and rotation_degrees.y >= minDegreesHorizontal:
+			rotate_y(event.relative.x * -sensitivity)
+
+		if rotation_degrees.y > maxDegreesHorizontal:
+			rotation_degrees.y = maxDegreesHorizontal
+		if rotation_degrees.y < minDegreesHorizontal:
+			rotation_degrees.y = minDegreesHorizontal
 "
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Spatial
 
-export var sensitivity : float = 0.005
+var sensitivity : float
+var minDegreesVertical : float
+var maxDegreesVertical : float
 
-func _input(event):
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		if rotation_degrees.x <= 80 and rotation_degrees.x >= -80:
+		if rotation_degrees.x <= maxDegreesVertical and rotation_degrees.x >= minDegreesVertical:
 			rotate_x(event.relative.y * -sensitivity)
 
-		if rotation_degrees.x > 80:
-			rotation_degrees.x = 80
-		if rotation_degrees.x < -80:
-			rotation_degrees.x = -80
+		if rotation_degrees.x > maxDegreesVertical:
+			rotation_degrees.x = maxDegreesVertical
+		if rotation_degrees.x < minDegreesVertical:
+			rotation_degrees.x = minDegreesVertical
 "
 
-[node name="CameraHub" type="Spatial"]
+[node name="CamHub" type="Spatial"]
 script = SubResource( 1 )
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="InnerHub" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 10, 0 )
 script = SubResource( 2 )
 
-[node name="Camera" type="Camera" parent="Spatial"]
+[node name="Camera" type="Camera" parent="InnerHub"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
 current = true
 fov = 60.0
