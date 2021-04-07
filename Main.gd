@@ -1,4 +1,4 @@
-extends ImmediateGeometry
+extends Spatial
 
 
 const START_BEFORE : Vector3 = Vector3.DOWN
@@ -12,6 +12,7 @@ var path : PoolVector3Array = PoolVector3Array([START_BEFORE, START])
 var angle : int = 0
 var last : Vector3 = START
 
+export(NodePath) onready var extrudeMesh = get_node(extrudeMesh) as ImmediateGeometry
 export(NodePath) onready var camera = get_node(camera) as Spatial
 export(NodePath) onready var inputLabel = get_node(inputLabel) as Label
 export(NodePath) onready var angleIcon = get_node(angleIcon) as TextureRect
@@ -78,10 +79,10 @@ func updateInputLabel() -> void:
 func _process(delta: float) -> void:
 	camera.translation = lerp(camera.translation, last, 0.03)
 
-	clear()
-	begin(Mesh.PRIMITIVE_LINE_STRIP)
+	extrudeMesh.clear()
+	extrudeMesh.begin(Mesh.PRIMITIVE_LINE_STRIP)
 
 	for coords in path:
-		add_vertex(coords)
+		extrudeMesh.add_vertex(coords)
 
-	end()
+	extrudeMesh.end()
