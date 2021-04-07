@@ -4,24 +4,43 @@
 script/source = "extends Spatial
 
 
+export(float, 0, 10, 0.01) var rotationSpeed : float = 1
 export(float, 0, 0.01, 0.0001) var sensitivity : float = 0.001
 export(float, 0, 90, 0.1) var maxDegreesVertical : float = 80
 export(float, 0, 180, 0.1) var maxDegreesHorizontal : float = 180
+export(float, 0, 5000, 1.0) var camDistanceIdle : float = 500
+export(float, 0, 5000, 1.0) var camDistancePlay : float = 500
 
 onready var innerHub := $InnerHub
+onready var camera := $InnerHub/Camera
 var minDegreesHorizontal : float
+
+var playMode := false setget setPlayMode
+
+
+func setPlayMode(play : bool) -> void:
+	if not playMode and play:
+		resetCamera(camDistancePlay)
+	if playMode and not play:
+		resetCamera(camDistanceIdle)
+
+	playMode = play
+	if innerHub:
+		innerHub.playMode = play
 
 
 func _ready() -> void:
-	minDegreesHorizontal = maxDegreesHorizontal * -1
+	minDegreesHorizontal = -maxDegreesHorizontal
 
 	innerHub.sensitivity = sensitivity
-	innerHub.minDegreesVertical = maxDegreesVertical * -1
+	innerHub.minDegreesVertical = -maxDegreesVertical
 	innerHub.maxDegreesVertical = maxDegreesVertical
+
+	camera.translation.z = camDistanceIdle
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if playMode and event is InputEventMouseMotion:
 
 		if rotation_degrees.y <= maxDegreesHorizontal and rotation_degrees.y >= minDegreesHorizontal:
 			rotate_y(event.relative.x * -sensitivity)
@@ -30,6 +49,23 @@ func _input(event: InputEvent) -> void:
 			rotation_degrees.y = maxDegreesHorizontal
 		if rotation_degrees.y < minDegreesHorizontal:
 			rotation_degrees.y = minDegreesHorizontal
+
+
+func _process(delta: float) -> void:
+	if not playMode:
+		rotate_y(delta * rotationSpeed)
+
+
+func resetCamera(distance : float) -> void:
+	var from = $InnerHub/Camera.translation
+	var to = Vector3(from.x, from.y, distance)
+	$Tween.interpolate_property($InnerHub/Camera, \"translation\", from, to, 3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.start()
+
+	from = rotation_degrees
+	to = Vector3(from.x, 360, from.z)
+	$Tween.interpolate_property(self, \"rotation_degrees\", from, to, 3, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+	$Tween.start()
 "
 
 [sub_resource type="GDScript" id=2]
@@ -38,10 +74,11 @@ script/source = "extends Spatial
 var sensitivity : float
 var minDegreesVertical : float
 var maxDegreesVertical : float
+var playMode : bool
 
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
+	if playMode and event is InputEventMouseMotion:
 		if rotation_degrees.x <= maxDegreesVertical and rotation_degrees.x >= minDegreesVertical:
 			rotate_x(event.relative.y * -sensitivity)
 
@@ -55,11 +92,13 @@ func _input(event: InputEvent) -> void:
 script = SubResource( 1 )
 
 [node name="InnerHub" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.866026, 0.5, 0, -0.5, 0.866026, 0, 10, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 script = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="InnerHub"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 30 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 230 )
 current = true
 fov = 60.0
 far = 10000.0
+
+[node name="Tween" type="Tween" parent="."]

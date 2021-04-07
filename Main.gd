@@ -18,6 +18,19 @@ export(NodePath) onready var inputLabel = get_node(inputLabel) as Label
 export(NodePath) onready var angleIcon = get_node(angleIcon) as TextureRect
 export(NodePath) onready var distanceIcon = get_node(distanceIcon) as TextureRect
 
+var playMode := false setget setPlayMode
+
+
+func setPlayMode(play : bool) -> void:
+	if not playMode and play:
+		startGame()
+	if playMode and not play:
+		stopGame()
+
+	playMode = play
+	if camera:
+		camera.playMode = play
+
 
 func _ready() -> void:
 	updateInputIcon()
@@ -27,6 +40,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	var keyEvent = event as InputEventKey
 	if keyEvent and keyEvent.is_pressed():
+
+		# TODO: remove me! --> implement actual game start for switching the playMode
+		if keyEvent.scancode == KEY_SPACE:
+			camera.playMode = !camera.playMode
+
 		if keyEvent.scancode >= KEY_0 and keyEvent.scancode <= KEY_9 and input.size() < 3:
 			input.append(str(keyEvent.scancode - KEY_0))
 		elif keyEvent.scancode == KEY_MINUS or keyEvent.scancode == KEY_PLUSMINUS:
@@ -86,3 +104,12 @@ func _process(delta: float) -> void:
 		extrudeMesh.add_vertex(coords)
 
 	extrudeMesh.end()
+
+
+func startGame() -> void:
+	# TODO: implement me!
+	pass
+
+func stopGame() -> void:
+	# TODO: implement me!
+	pass

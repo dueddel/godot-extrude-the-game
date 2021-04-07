@@ -63,8 +63,11 @@ material_override = SubResource( 1 )
 transform = Transform( 0.999843, 0.0121679, -0.0128606, -0.0120448, 0.999881, 0.00960495, 0.0129759, -0.00944855, 0.999871, 0, 0, 0 )
 
 [node name="CameraHub" parent="." instance=ExtResource( 1 )]
-maxDegreesVertical = 30.0
-maxDegreesHorizontal = 30.0
+rotationSpeed = 0.2
+maxDegreesVertical = 0.0
+maxDegreesHorizontal = 0.0
+camDistanceIdle = 300.0
+camDistancePlay = 30.0
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.908545, -0.300197, -0.290564, 0.377387, 0.291334, 0.879036, -0.179233, -0.908299, 0.37798, 0, 50, 0 )
