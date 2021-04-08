@@ -17,6 +17,7 @@ export(NodePath) onready var camera = get_node(camera) as Spatial
 export(NodePath) onready var inputLabel = get_node(inputLabel) as Label
 export(NodePath) onready var angleIcon = get_node(angleIcon) as TextureRect
 export(NodePath) onready var distanceIcon = get_node(distanceIcon) as TextureRect
+export(NodePath) onready var overlay = get_node(overlay) as TextureRect
 
 var playMode := false setget setPlayMode
 
@@ -43,7 +44,7 @@ func _input(event: InputEvent) -> void:
 
 		# TODO: remove me! --> implement actual game start for switching the playMode
 		if keyEvent.scancode == KEY_SPACE:
-			camera.playMode = !camera.playMode
+			setPlayMode(!playMode)
 
 		if keyEvent.scancode >= KEY_0 and keyEvent.scancode <= KEY_9 and input.size() < 3:
 			input.append(str(keyEvent.scancode - KEY_0))
@@ -83,15 +84,19 @@ func _input(event: InputEvent) -> void:
 
 
 func updateInputIcon() -> void:
-	if angleIcon:
-		angleIcon.modulate.a = 1.0 if aOrD else 0.2
-	if distanceIcon:
-		distanceIcon.modulate.a = 0.2 if aOrD else 1.0
-
+	if playMode:
+		if angleIcon:
+			angleIcon.modulate.a = 1.0 if aOrD else 0.2
+		if distanceIcon:
+			distanceIcon.modulate.a = 0.2 if aOrD else 1.0
+	else:
+		angleIcon.modulate.a = 0.2
+		distanceIcon.modulate.a = 0.2
 
 func updateInputLabel() -> void:
 	if inputLabel:
 		inputLabel.text = ("-" if negative else "") + (input.join("") if input.size() > 0 else "0")
+		inputLabel.modulate.a = 1.0 if playMode else 0.2
 
 
 func _process(delta: float) -> void:
@@ -107,9 +112,17 @@ func _process(delta: float) -> void:
 
 
 func startGame() -> void:
-	# TODO: implement me!
-	pass
+	if overlay:
+		$AnimationPlayer.play("overlay_fade_out")
+#		var from = Color(1, 1, 1, 1)
+#		var to = Color(1, 1, 1, 0)
+#		$Tween.interpolate_property(overlay, "modulate", from, to, 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+#		overlay.modulate.a = 0.0
+
 
 func stopGame() -> void:
-	# TODO: implement me!
-	pass
+	if overlay:
+		$AnimationPlayer.play("overlay_fade_in")
+#		var from = Color(1, 1, 1, 0)
+#		var to = Color(1, 1, 1, 1)
+#		$Tween.interpolate_property(overlay, "modulate", from, to, 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)

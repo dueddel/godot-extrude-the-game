@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MK90Cyr5x7.ttf" type="DynamicFontData" id=3]
@@ -16,6 +16,14 @@ emission = Color( 0.937255, 0.388235, 0.388235, 1 )
 emission_energy = 0.8
 emission_operator = 0
 emission_on_uv2 = false
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0.2, 0.5, 0.8 )
+colors = PoolColorArray( 0, 0, 0, 0.784314, 0.0666667, 0, 0, 0.392157, 0, 0, 0, 0.784314 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+width = 600
 
 [sub_resource type="DynamicFont" id=2]
 size = 64
@@ -47,6 +55,38 @@ albedo_color = Color( 0, 0.552941, 1, 1 )
 material = SubResource( 8 )
 size = Vector3( 0.2, 0.2, 50 )
 
+[sub_resource type="Animation" id=12]
+resource_name = "overlay_fade_in"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Interface/Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "overlay_fade_out"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Interface/Overlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="Main" type="Spatial"]
 script = ExtResource( 8 )
 extrudeMesh = NodePath("Extrude")
@@ -54,6 +94,7 @@ camera = NodePath("CameraHub")
 inputLabel = NodePath("Interface/VBoxContainer/InputLabel")
 angleIcon = NodePath("Interface/VBoxContainer/HBoxContainer/Steering Wheel")
 distanceIcon = NodePath("Interface/VBoxContainer/HBoxContainer/Road")
+overlay = NodePath("Interface/Overlay")
 
 [node name="Extrude" type="ImmediateGeometry" parent="."]
 transform = Transform( 0.999843, 0.0121679, -0.0128606, -0.0120448, 0.999881, 0.00960495, 0.0129759, -0.00944855, 0.999871, 0, 0, 0 )
@@ -73,6 +114,19 @@ camDistancePlay = 30.0
 transform = Transform( 0.908545, -0.300197, -0.290564, 0.377387, 0.291334, 0.879036, -0.179233, -0.908299, 0.37798, 0, 50, 0 )
 
 [node name="Interface" type="Node" parent="."]
+
+[node name="Overlay" type="TextureRect" parent="Interface"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -10.0
+margin_bottom = -10.0
+rect_rotation = 89.9999
+rect_scale = Vector2( 0.60709, -1.72088 )
+texture = SubResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Interface"]
 anchor_top = 0.999249
@@ -168,3 +222,7 @@ material/0 = null
 [node name="zAxis" type="MeshInstance" parent="Helper"]
 mesh = SubResource( 9 )
 material/0 = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/overlay_fade_in = SubResource( 12 )
+anims/overlay_fade_out = SubResource( 13 )
