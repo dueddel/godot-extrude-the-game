@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MK90Cyr5x7.ttf" type="DynamicFontData" id=3]
@@ -17,46 +17,64 @@ emission_energy = 0.8
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="Gradient" id=10]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.2, 0.5, 0.8 )
 colors = PoolColorArray( 0, 0, 0, 0.784314, 0.0666667, 0, 0, 0.392157, 0, 0, 0, 0.784314 )
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 width = 600
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 size = 64
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0, 0.0862745, 1, 1 )
+[sub_resource type="DynamicFont" id=15]
+size = 128
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
-[sub_resource type="CubeMesh" id=4]
-material = SubResource( 3 )
-size = Vector3( 50, 0.2, 0.2 )
+[sub_resource type="DynamicFont" id=17]
+size = 32
+outline_size = 5
+outline_color = Color( 0.301961, 0.317647, 0.321569, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 32
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0.0862745, 1, 1 )
+
+[sub_resource type="CubeMesh" id=6]
+material = SubResource( 5 )
+size = Vector3( 50, 0.2, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 1, 0.0352941, 0.0352941, 1 )
 
-[sub_resource type="SpatialMaterial" id=6]
-albedo_color = Color( 0.196078, 1, 0, 1 )
-
-[sub_resource type="CubeMesh" id=7]
-material = SubResource( 6 )
-size = Vector3( 0.2, 10, 0.2 )
-
 [sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0, 0.552941, 1, 1 )
+albedo_color = Color( 0.196078, 1, 0, 1 )
 
 [sub_resource type="CubeMesh" id=9]
 material = SubResource( 8 )
+size = Vector3( 0.2, 10, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0, 0.552941, 1, 1 )
+
+[sub_resource type="CubeMesh" id=11]
+material = SubResource( 10 )
 size = Vector3( 0.2, 0.2, 50 )
 
 [sub_resource type="Animation" id=12]
-resource_name = "overlay_fade_in"
+resource_name = "menu_fade_in"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Interface/Overlay:modulate")
@@ -70,9 +88,53 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Interface/Main Menu/TitleLabel:margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -386.142, -0.25, 0, 0, -906.067, 180, -1.27, 413.939, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Interface/Main Menu/StartLabel:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( -390.877, -0.25, 0, 0.04, -878.937, 180, -0.73, 366.661, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Interface/Main Menu/InstructionsLabel:margin_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 395.0, 485.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Interface/Main Menu/InstructionsLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=13]
-resource_name = "overlay_fade_out"
+resource_name = "menu_fade_out"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Interface/Overlay:modulate")
@@ -86,14 +148,72 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Interface/Main Menu/TitleLabel:margin_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 180, -0.25, 0, 0.68, -955.167, 1754.56, -0.3, 1948.09, 0.25, 0 ),
+"times": PoolRealArray( 0, 1.5 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Interface/Main Menu/StartLabel:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 180, -0.25, 0, 0.39, 630.423, -901.542, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.9 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Interface/Main Menu/InstructionsLabel:margin_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 485, -0.25, 0, 0.25, 0, 619, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Interface/Main Menu/InstructionsLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "menu_idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Interface/Main Menu/StartLabel:custom_fonts/font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ) ]
+}
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 8 )
 extrudeMesh = NodePath("Extrude")
 camera = NodePath("CameraHub")
-inputLabel = NodePath("Interface/VBoxContainer/InputLabel")
-angleIcon = NodePath("Interface/VBoxContainer/HBoxContainer/Steering Wheel")
-distanceIcon = NodePath("Interface/VBoxContainer/HBoxContainer/Road")
+inputLabel = NodePath("Interface/Ingame UI/InputLabel")
+angleIcon = NodePath("Interface/Ingame UI/HBoxContainer/Steering Wheel")
+distanceIcon = NodePath("Interface/Ingame UI/HBoxContainer/Road")
 overlay = NodePath("Interface/Overlay")
 
 [node name="Extrude" type="ImmediateGeometry" parent="."]
@@ -122,13 +242,13 @@ margin_top = -10.0
 margin_bottom = -10.0
 rect_rotation = 89.9999
 rect_scale = Vector2( 0.60709, -1.72088 )
-texture = SubResource( 11 )
+texture = SubResource( 3 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Interface"]
+[node name="Ingame UI" type="VBoxContainer" parent="Interface"]
 anchor_top = 0.999249
 anchor_right = 0.0195312
 anchor_bottom = 0.999249
@@ -139,19 +259,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Interface/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/Ingame UI"]
 margin_right = 104.0
 margin_bottom = 50.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Steering Wheel" type="TextureRect" parent="Interface/VBoxContainer/HBoxContainer"]
+[node name="Steering Wheel" type="TextureRect" parent="Interface/Ingame UI/HBoxContainer"]
 margin_right = 50.0
 margin_bottom = 50.0
 texture = ExtResource( 4 )
 
-[node name="Road" type="TextureRect" parent="Interface/VBoxContainer/HBoxContainer"]
+[node name="Road" type="TextureRect" parent="Interface/Ingame UI/HBoxContainer"]
 margin_left = 54.0
 margin_right = 104.0
 margin_bottom = 50.0
@@ -160,13 +280,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InputLabel" type="Label" parent="Interface/VBoxContainer"]
+[node name="InputLabel" type="Label" parent="Interface/Ingame UI"]
 margin_top = 54.0
 margin_right = 104.0
 margin_bottom = 97.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "-180"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Menu" type="Node" parent="Interface"]
+
+[node name="TitleLabel" type="Label" parent="Interface/Main Menu"]
+margin_left = 180.0
+margin_top = 232.0
+margin_right = -49.2701
+margin_bottom = 318.0
+custom_fonts/font = SubResource( 15 )
+text = "Extrude"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartLabel" type="Label" parent="Interface/Main Menu"]
+margin_left = 180.0
+margin_top = 365.678
+margin_right = 444.0
+margin_bottom = 453.678
+custom_fonts/font = SubResource( 17 )
+text = "Press any key to play."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InstructionsLabel" type="Label" parent="Interface/Main Menu"]
+margin_left = 180.0
+margin_top = 485.0
+margin_right = 540.0
+margin_bottom = 582.123
+custom_fonts/font = SubResource( 14 )
+text = "How to play:
+Type an angle and hit Enter.
+Type a distance and hit Enter.
+Repeat."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -212,17 +370,19 @@ wait = 11.0
 visible = false
 
 [node name="xAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 4 )
-material/0 = SubResource( 5 )
+mesh = SubResource( 6 )
+material/0 = SubResource( 7 )
 
 [node name="yAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 7 )
-material/0 = null
-
-[node name="zAxis" type="MeshInstance" parent="Helper"]
 mesh = SubResource( 9 )
 material/0 = null
 
+[node name="zAxis" type="MeshInstance" parent="Helper"]
+mesh = SubResource( 11 )
+material/0 = null
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/overlay_fade_in = SubResource( 12 )
-anims/overlay_fade_out = SubResource( 13 )
+autoplay = "menu_idle"
+anims/menu_fade_in = SubResource( 12 )
+anims/menu_fade_out = SubResource( 13 )
+anims/menu_idle = SubResource( 16 )

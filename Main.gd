@@ -43,10 +43,12 @@ func _input(event: InputEvent) -> void:
 	if keyEvent and keyEvent.is_pressed():
 
 		# TODO: remove me! --> implement actual game start for switching the playMode
-		if keyEvent.scancode == KEY_SPACE:
+		if !playMode and keyEvent.scancode != KEY_CONTROL and keyEvent.scancode != KEY_META and keyEvent.scancode != KEY_ALT:
+			setPlayMode(!playMode)
+		elif keyEvent.scancode == KEY_ESCAPE:
 			setPlayMode(!playMode)
 
-		if keyEvent.scancode >= KEY_0 and keyEvent.scancode <= KEY_9 and input.size() < 3:
+		elif keyEvent.scancode >= KEY_0 and keyEvent.scancode <= KEY_9 and input.size() < 3:
 			input.append(str(keyEvent.scancode - KEY_0))
 		elif keyEvent.scancode == KEY_MINUS or keyEvent.scancode == KEY_PLUSMINUS:
 			negative = !negative
@@ -93,6 +95,7 @@ func updateInputIcon() -> void:
 		angleIcon.modulate.a = 0.2
 		distanceIcon.modulate.a = 0.2
 
+
 func updateInputLabel() -> void:
 	if inputLabel:
 		inputLabel.text = ("-" if negative else "") + (input.join("") if input.size() > 0 else "0")
@@ -113,16 +116,11 @@ func _process(delta: float) -> void:
 
 func startGame() -> void:
 	if overlay:
-		$AnimationPlayer.play("overlay_fade_out")
-#		var from = Color(1, 1, 1, 1)
-#		var to = Color(1, 1, 1, 0)
-#		$Tween.interpolate_property(overlay, "modulate", from, to, 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
-#		overlay.modulate.a = 0.0
+		$AnimationPlayer.play("menu_fade_out")
 
 
 func stopGame() -> void:
 	if overlay:
-		$AnimationPlayer.play("overlay_fade_in")
-#		var from = Color(1, 1, 1, 0)
-#		var to = Color(1, 1, 1, 1)
-#		$Tween.interpolate_property(overlay, "modulate", from, to, 2, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
+		$AnimationPlayer.play("menu_fade_in")
+		yield($AnimationPlayer, "animation_finished")
+		$AnimationPlayer.play("menu_idle")
