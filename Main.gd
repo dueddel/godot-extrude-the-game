@@ -42,9 +42,9 @@ func _input(event: InputEvent) -> void:
 	var keyEvent = event as InputEventKey
 	if keyEvent and keyEvent.is_pressed():
 
-		# TODO: remove me! --> implement actual game start for switching the playMode
 		if !playMode and keyEvent.scancode != KEY_CONTROL and keyEvent.scancode != KEY_META and keyEvent.scancode != KEY_ALT:
 			setPlayMode(!playMode)
+		# TODO: remove me! --> implement actual game stop for switching the playMode
 		elif keyEvent.scancode == KEY_ESCAPE:
 			setPlayMode(!playMode)
 

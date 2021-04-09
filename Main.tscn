@@ -31,50 +31,49 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=5]
 size = 128
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=17]
-size = 32
-outline_size = 5
-outline_color = Color( 0.301961, 0.317647, 0.321569, 1 )
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=6]
 size = 32
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=5]
-albedo_color = Color( 0, 0.0862745, 1, 1 )
-
-[sub_resource type="CubeMesh" id=6]
-material = SubResource( 5 )
-size = Vector3( 50, 0.2, 0.2 )
-
-[sub_resource type="SpatialMaterial" id=7]
-albedo_color = Color( 1, 0.0352941, 0.0352941, 1 )
+[sub_resource type="DynamicFont" id=7]
+size = 32
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="SpatialMaterial" id=8]
-albedo_color = Color( 0.196078, 1, 0, 1 )
+albedo_color = Color( 0, 0.0862745, 1, 1 )
 
 [sub_resource type="CubeMesh" id=9]
 material = SubResource( 8 )
-size = Vector3( 0.2, 10, 0.2 )
+size = Vector3( 50, 0.2, 0.2 )
 
 [sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 1, 0.0352941, 0.0352941, 1 )
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 0.196078, 1, 0, 1 )
+
+[sub_resource type="CubeMesh" id=12]
+material = SubResource( 11 )
+size = Vector3( 0.2, 10, 0.2 )
+
+[sub_resource type="SpatialMaterial" id=13]
 albedo_color = Color( 0, 0.552941, 1, 1 )
 
-[sub_resource type="CubeMesh" id=11]
-material = SubResource( 10 )
+[sub_resource type="CubeMesh" id=14]
+material = SubResource( 13 )
 size = Vector3( 0.2, 0.2, 50 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "menu_fade_in"
+[sub_resource type="Animation" id=15]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Interface/Overlay:modulate")
@@ -133,8 +132,7 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "menu_fade_out"
+[sub_resource type="Animation" id=16]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Interface/Overlay:modulate")
@@ -191,8 +189,8 @@ tracks/4/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=16]
-resource_name = "menu_idle"
+[sub_resource type="Animation" id=17]
+length = 4.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Interface/Main Menu/StartLabel:custom_fonts/font:outline_color")
@@ -201,10 +199,82 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.4, 0.7, 1.4, 2.4, 2.7, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Interface/Ingame UI/HBoxContainer/Steering Wheel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction1:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Interface/Ingame UI/HBoxContainer/Road:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Interface/Ingame UI/InputLabel:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "0", "-0", "-5", "0", "1", "10" ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Interface/Ingame UI/InputLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.9, 2, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
 }
 
 [node name="Main" type="Spatial"]
@@ -267,9 +337,13 @@ __meta__ = {
 }
 
 [node name="Steering Wheel" type="TextureRect" parent="Interface/Ingame UI/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0.2 )
 margin_right = 50.0
 margin_bottom = 50.0
 texture = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": "d"
+}
 
 [node name="Road" type="TextureRect" parent="Interface/Ingame UI/HBoxContainer"]
 margin_left = 54.0
@@ -285,7 +359,7 @@ margin_top = 54.0
 margin_right = 104.0
 margin_bottom = 97.0
 custom_fonts/font = SubResource( 4 )
-text = "-180"
+text = "0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -298,7 +372,7 @@ margin_left = 180.0
 margin_top = 232.0
 margin_right = -49.2701
 margin_bottom = 318.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 5 )
 text = "Extrude"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -309,7 +383,7 @@ margin_left = 180.0
 margin_top = 365.678
 margin_right = 444.0
 margin_bottom = 453.678
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 6 )
 text = "Press any key to play."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -320,11 +394,33 @@ margin_left = 180.0
 margin_top = 485.0
 margin_right = 540.0
 margin_bottom = 582.123
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 7 )
 text = "How to play:
-Type an angle and hit Enter.
-Type a distance and hit Enter.
+
+
 Repeat."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instruction1" type="Label" parent="Interface/Main Menu/InstructionsLabel"]
+modulate = Color( 1, 1, 1, 0.2 )
+margin_right = 360.0
+margin_bottom = 97.123
+custom_fonts/font = SubResource( 7 )
+text = "
+Type an angle and hit Enter."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instruction2" type="Label" parent="Interface/Main Menu/InstructionsLabel"]
+margin_right = 360.0
+margin_bottom = 97.123
+custom_fonts/font = SubResource( 7 )
+text = "
+
+Type a distance and hit Enter."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -370,19 +466,19 @@ wait = 11.0
 visible = false
 
 [node name="xAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 6 )
-material/0 = SubResource( 7 )
+mesh = SubResource( 9 )
+material/0 = SubResource( 10 )
 
 [node name="yAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 9 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="zAxis" type="MeshInstance" parent="Helper"]
-mesh = SubResource( 11 )
+mesh = SubResource( 14 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "menu_idle"
-anims/menu_fade_in = SubResource( 12 )
-anims/menu_fade_out = SubResource( 13 )
-anims/menu_idle = SubResource( 16 )
+anims/menu_fade_in = SubResource( 15 )
+anims/menu_fade_out = SubResource( 16 )
+anims/menu_idle = SubResource( 17 )
