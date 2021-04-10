@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://MK90Cyr5x7.ttf" type="DynamicFontData" id=3]
@@ -202,7 +202,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.4, 0.7, 1.4, 2.4, 2.7, 3.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0.301961, 0.317647, 0.321569, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.45098, 0.482353, 0.494118, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0.45098, 0.482353, 0.494118, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Interface/Ingame UI/HBoxContainer/Steering Wheel:modulate")
@@ -211,10 +211,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction1:modulate")
@@ -223,10 +223,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Interface/Ingame UI/HBoxContainer/Road:modulate")
@@ -235,10 +235,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction2:modulate")
@@ -247,17 +247,17 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Interface/Ingame UI/InputLabel:text")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 2, 2.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -269,12 +269,114 @@ tracks/6/path = NodePath("Interface/Ingame UI/InputLabel:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0, 1.9, 2, 3.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.2 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "startup"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Interface/Main Menu/TitleLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Interface/Main Menu/InstructionsLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Interface/Main Menu/StartLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Interface/Ingame UI:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 5.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4.5, 6, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Interface/Main Menu/InstructionsLabel/Instruction2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.2 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 6.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "menuIdle"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Interface/Ingame UI/HBoxContainer/Steering Wheel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 6, 6.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Main" type="Spatial"]
@@ -355,11 +457,12 @@ __meta__ = {
 }
 
 [node name="InputLabel" type="Label" parent="Interface/Ingame UI"]
+modulate = Color( 1, 1, 1, 0.2 )
 margin_top = 54.0
 margin_right = 104.0
 margin_bottom = 97.0
 custom_fonts/font = SubResource( 4 )
-text = "0"
+text = "-180"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -380,10 +483,11 @@ __meta__ = {
 
 [node name="StartLabel" type="Label" parent="Interface/Main Menu"]
 margin_left = 180.0
-margin_top = 365.678
+margin_top = 366.168
 margin_right = 444.0
-margin_bottom = 453.678
+margin_bottom = 454.168
 custom_fonts/font = SubResource( 6 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Press any key to play."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -396,8 +500,8 @@ margin_right = 540.0
 margin_bottom = 582.123
 custom_fonts/font = SubResource( 7 )
 text = "How to play:
-
-
+Type an angle and hit Enter.
+Type a distance and hit Enter.
 Repeat."
 __meta__ = {
 "_edit_use_anchors_": false
@@ -405,22 +509,26 @@ __meta__ = {
 
 [node name="Instruction1" type="Label" parent="Interface/Main Menu/InstructionsLabel"]
 modulate = Color( 1, 1, 1, 0.2 )
-margin_right = 360.0
-margin_bottom = 97.123
+margin_left = -24.0
+margin_top = 1.0
+margin_right = 336.0
+margin_bottom = 98.123
 custom_fonts/font = SubResource( 7 )
 text = "
-Type an angle and hit Enter."
+>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Instruction2" type="Label" parent="Interface/Main Menu/InstructionsLabel"]
-margin_right = 360.0
-margin_bottom = 97.123
+margin_left = -23.5637
+margin_top = 1.0
+margin_right = 336.436
+margin_bottom = 98.123
 custom_fonts/font = SubResource( 7 )
 text = "
 
-Type a distance and hit Enter."
+>"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -478,7 +586,8 @@ mesh = SubResource( 14 )
 material/0 = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "menu_idle"
+autoplay = "startup"
 anims/menu_fade_in = SubResource( 15 )
 anims/menu_fade_out = SubResource( 16 )
 anims/menu_idle = SubResource( 17 )
+anims/startup = SubResource( 18 )

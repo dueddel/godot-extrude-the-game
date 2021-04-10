@@ -42,9 +42,9 @@ func _input(event: InputEvent) -> void:
 	var keyEvent = event as InputEventKey
 	if keyEvent and keyEvent.is_pressed():
 
+		# TODO: remove me! --> implement actual game start for switching the playMode
 		if !playMode and keyEvent.scancode != KEY_CONTROL and keyEvent.scancode != KEY_META and keyEvent.scancode != KEY_ALT:
 			setPlayMode(!playMode)
-		# TODO: remove me! --> implement actual game stop for switching the playMode
 		elif keyEvent.scancode == KEY_ESCAPE:
 			setPlayMode(!playMode)
 
@@ -80,6 +80,8 @@ func _input(event: InputEvent) -> void:
 			input = PoolStringArray()
 			negative = false
 			aOrD = !aOrD
+		else:
+			return
 
 		updateInputIcon()
 		updateInputLabel()
@@ -114,6 +116,11 @@ func _process(delta: float) -> void:
 	extrudeMesh.end()
 
 
+func menuIdle() -> void:
+	if overlay:
+		$AnimationPlayer.play("menu_idle")
+
+
 func startGame() -> void:
 	if overlay:
 		$AnimationPlayer.play("menu_fade_out")
@@ -123,4 +130,4 @@ func stopGame() -> void:
 	if overlay:
 		$AnimationPlayer.play("menu_fade_in")
 		yield($AnimationPlayer, "animation_finished")
-		$AnimationPlayer.play("menu_idle")
+		menuIdle()
